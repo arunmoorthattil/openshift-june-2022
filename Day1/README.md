@@ -116,3 +116,31 @@
 - containers get's its file system from the Docker Image
 - get's its own copy of network stack
 - get's its own ports ( 0 - 65535 )
+
+## Docker Public/Remote Registry
+- Public Docker Registry is a web portal maintained by Docker Inc (Docker Hub)
+- hosts a lot of Docker images
+- any images you push here are accessible to entire open source community
+
+## Docker Private Registry
+- Optionally your organization can setup a private docker registry
+- will host many public images and private proprietary Docker images
+- JFrog Artifactory or Sonatype Nexus can be used to setup a Private Docker Registry
+    - production grade
+- optionally can also use docker.io/registry:latest docker image to setup private docker registry
+  - good for prototype
+  - lightweight setup - very helpful for laptops
+  - not recommended for production
+
+## Docker Local Registry
+- this is local folder created and maintained by Docker Engine ( Docker Server )
+
+## Finding the docker version
+```
+docker --version
+```
+
+## Listing Docker Images in the Local Docker Registry
+```
+docker images
+```

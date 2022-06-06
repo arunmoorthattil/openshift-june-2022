@@ -5,7 +5,7 @@
 - GRUB ( 1 & 2 )
 - Linux OS they all come with GRUB 2 
 - Only one OS can be active at any point
-- You can technically install many OS in the same system but only one active OS at any point in time
+- You can technically install many OS in the same system but only one OS can be active OS at any point in time
 
 ## Virtualization Technology
 - is also referred as Hypervisor

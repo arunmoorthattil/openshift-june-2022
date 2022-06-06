@@ -151,6 +151,13 @@ docker pull alpine:latest
 ```
 
 ## Creating a container in the interactive(foreground) mode
+This command will take you inside the container's shell interactively
+```
+docker run -it --name c1 --hostname c1 alpine:latest /bin/sh
+```
+In order to come out of the container's shell, you need to type exit.  This will exit the container.
+
+## Creating a container in the daemon/deattached(background) mode
 ```
 docker run -dit --name c1 --hostname c1 alpine:latest /bin/sh
 ```

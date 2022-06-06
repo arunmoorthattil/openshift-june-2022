@@ -149,3 +149,8 @@ docker images
 ```
 docker pull alpine:latest
 ```
+
+## Creating a container in the interactive(foreground) mode
+```
+docker run -dit --name c1 --hostname c1 alpine:latest /bin/sh
+```

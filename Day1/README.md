@@ -231,7 +231,7 @@ docker inspect -f "{{.NetworkSettings.IPAddress}}" <container-name>
 ## Committing a container as a Docker image
 You may manually install some software tools and may commit it as a container image.
 
-Though this works, from DevOps points of view this isn't recommended.
+Though this works, from DevOps point of view this isn't recommended.
 
 ```
 docker commit <container-id> <image-name:tag>

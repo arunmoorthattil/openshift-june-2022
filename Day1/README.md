@@ -144,3 +144,8 @@ docker --version
 ```
 docker images
 ```
+
+## Downloading an image from Docker Hub to Local Docker Registry
+```
+docker pull alpine:latest
+```

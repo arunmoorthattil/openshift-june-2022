@@ -154,3 +154,8 @@ docker pull alpine:latest
 ```
 docker run -dit --name c1 --hostname c1 alpine:latest /bin/sh
 ```
+
+## Listing all running containers
+```
+docker ps
+```

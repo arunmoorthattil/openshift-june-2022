@@ -225,7 +225,7 @@ docker rename <old-container-name> <new-container-name>
 docker inspect <container-id>
 docker inspect <container-id> | grep IPA
 docker inspect <container-name> | grep IPA
-docker inspect -f "{{.NetworkSettings.IPAddress}}" <container-name>
+docker inspect -f {{.NetworkSettings.IPAddress}} <container-name>
 ```
 
 ## Committing a container as a Docker image

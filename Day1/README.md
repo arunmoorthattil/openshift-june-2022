@@ -238,3 +238,39 @@ docker commit <container-id> <image-name:tag>
 docker commit <container-name> <image-name:tag.
 docker commit ubuntu1 tektutor/ubuntu-vim:1.0
 ```
+
+## Storing application data in a external volume as opposed to container storage
+
+- Storing application data in a container storage is considered a bad practice
+- Container orchestration platform in the process scale up/down it might delete any container, hence you
+  will lose the data stored in container storage
+- the recommended practice is to store application log/data in an external volume ( hostpath, AWS S3, Block storage provided by your cloud vendor, etc.,)
+
+First create a folder in your home directory.
+```
+mkdir -p ~/tmp/tomcat
+```
+Create a html file
+```
+echo "Tomcat Works!" > ~/tmp/tomcat/index.html
+```
+
+Let's create a container
+```
+docker run -d --name tomcat1 --hostname tomcat1 -v ~/tmp/tomcat:/usr/local/tomcat/webapps/tektutor tomcat:latest
+```
+
+Find the IP address of your container
+```
+docker inspect tomcat1| grep IPA
+```
+
+Test and see if you can access the web page hosted inside the container
+```
+curl <container-ip>:8080/tektutor/index.html
+```
+
+Expected ouptut
+<pre>
+Tomcat Works!
+</pre>

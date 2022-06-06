@@ -100,6 +100,14 @@
 - example:
   - runc is a container runtime that is used by many Container Engines including Docker
 
+## Docker Overview
+- developed by Docker Inc organization using Go programming language
+
+# Docker Alternatives
+- LXC
+- Podman
+- Rkt ( pronounced as Rocket )
+
 ## Docker Image
 - similar to ISO operating system image file
 - containers can be created only via Docker Image

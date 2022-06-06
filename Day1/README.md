@@ -228,4 +228,13 @@ docker inspect <container-name> | grep IPA
 docker inspect -f "{{.NetworkSettings.IPAddress}}" <container-name>
 ```
 
+## Committing a container as a Docker image
+You may manually install some software tools and may commit it as a container image.
 
+Though this works, from DevOps points of view this isn't recommended.
+
+```
+docker commit <container-id> <image-name:tag>
+docker commit <container-name> <image-name:tag.
+docker commit ubuntu1 tektutor/ubuntu-vim:1.0
+```

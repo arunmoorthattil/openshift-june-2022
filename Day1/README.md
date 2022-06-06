@@ -159,3 +159,45 @@ docker run -dit --name c1 --hostname c1 alpine:latest /bin/sh
 ```
 docker ps
 ```
+
+## Getting inside conainter shell
+```
+docker exec -it <container-id> /bin/bash
+docker exec -it <container-name> /bin/bash
+docker exec -it <container-name> bash
+```
+
+## Stop a running container
+```
+docker stop <container_id>
+docker stop <container_name>
+```
+
+## Restart a running container
+```
+docker restart <container_id>
+docker restart <container_name>
+```
+
+## Start a stopped container
+```
+docker start <container_id>
+docker start <container_name>
+```
+
+## Delete a container
+```
+docker rm <container_id>
+docker rm <container_name>
+```
+## Deleting multiple containers
+```
+docker rm <container_id1> <container_id2> <container_id3>
+docker rm <container_name1> <container_name2> <container_name3>
+docker rm $(docker ps -aq)
+```
+
+## Stopping and deleting multiple containers
+```
+docker stop $(docker ps -q) && docker rm $(docker ps -aq)
+```

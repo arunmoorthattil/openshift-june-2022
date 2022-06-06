@@ -68,7 +68,7 @@
    
 | Type 1 Hypervisor                       | Type 2 Hypervisor                        |
 | --------------------------------------- | ---------------------------------------- |
-| ![type1hypervisor](T1H.png) | ![type2hypervisor](T2H.png)   |
+| ![type1hypervisor]([T1H.png](https://github.com/tektutor/devops-march-2022/blob/main/Day1/T1H.png)) | ![type2hypervisor]([T2H.png](https://github.com/tektutor/devops-march-2022/blob/main/Day1/T2H.png))   |
    
 ## Container Technology
 - is fundamentally a Linux technology

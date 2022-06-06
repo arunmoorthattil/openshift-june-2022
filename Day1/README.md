@@ -1,17 +1,19 @@
 # Day 1 - Docker
 
 ## Boot Loaders
-- LILO
-- GRUB ( 1 & 2 )
-- Linux OS they all come with GRUB 2 
+- LILO - Opensource
+- GRUB ( 1 & 2 ) - opensource
+- rEFIt - used by Intel based Macs
+- BootCamp - used by Mac OSX to support dual booting
+- Linux OS comes with GRUB 2 Boot Loader
 - Only one OS can be active at any point
 - You can technically install many OS in the same system but only one OS can be active OS at any point in time
 
 ## Virtualization Technology
 - is also referred as Hypervisor
 - this technology helps us run many Operating Systems side by side on the same machine (Laptop/Desktop/Workstation/Server)
-- many OS can be active on the same system simultaneously
-- it is combination of Hardware & Software technology
+- many OS can be active on the same system 
+- it is a combination of Hardware & Software technology
   - Processor
     AMD
       - AMD-V is the virtualization feature supported on the AMD processor
@@ -26,24 +28,24 @@
        - requires HOST OS
        - i.e it can only be installed on top a Host Operating System ( Windows, Mac OS-X, Unix/Linux )
 - Without Virtualization Technology 1000 Physical servers are required to support 1000 OS
-- Server consolidation is possible with the help of Virtualization Technology
-- With Virtualization, how many physical servers are required to support 1000 OS
-   - technically it is possible with 1 Physical server you could host 1000 Virtual machines
-   - or in normal scenarios may be 4~5 physical servers could easily support 1000 virtual machines
-- What is the deciding factor which control the max Virtual machines supported?
+- Server consolidation is possible with the help of Virtualization Technology.  In other words, technically 1 or 2 Servers can host 1000 Virtual machines in the place of 1000 Physical Servers.  This results in huge cost saving in terms of real estate cost, power bill, air-conditioning, sound proofing, etc.,
+- What is the deciding factor which controls the max Virtual machines supported?
     - configuration of the machine
-    - Processors
+    - Processors (
         - multi-core 
     - RAM
     - Storage (Hard Disk )
+    - High end servers/workstations supports Multiple Sockets(Multiple Processors) in a single motherbaord
+    - Some Processors are SCM(Single Chip Module) or MCM(Multiple Chip Modules), meaning one IC(Integrated Chip) supports many processors but can be installed into one socket on the motherboard.
 - Hyperthreading
-    - each physical cpu core are seen by the Hypervisor(virtualization) software as 2 or more logical cores
+    - each physical cpu cores are seen by the Hypervisor(virtualization) software as 2 or more logical cores
     - 1 physical core will be detected by the virtualization softwares as 2 Logical cores
     - Example
-        - let's you have Processor that supports 256 core
-        - it would be seen by the Virtualization software as 512 logical cores
+        - let's say you have Processor that supports 256 core
+        - it would be seen by the Virtualization software as 512 (256 x 2) logical cores
+        - in modern processors each Physical core is detected as 256 x 4 = 1024 logical cores
 
-- In case of Type2 virtualization, there will be two kind of Operating System
+- In case of Type2 virtualization, there will be two kind of Operating Systems
    1. Host Operating System
    2. Virtual Machine (VM - Guest Operating System )
 - In case of Type1 virtualization, there will only one kind of Operating System
@@ -64,9 +66,8 @@
    
    Kernal Virtual Manager (KVM) - Open source supported in all Linux OS
    
-   
 ## Container Technology
-- is a fundamentally a Linux technology
+- is fundamentally a Linux technology
 - Linux Kernel supports
    1. Namespace ( Isolation )
    2. Control Groups (CGroup) - applying hardware resource quota restrictions
@@ -86,7 +87,7 @@
  - is not an OS
  - is just an application process that runs in a separate namespace
  - technically we can create containers directly using the system calls ( Linux namespace & CGroups )
- - but using Docker Container Engine it is more easier to create containers without knowing any low-level OS/kernel details it is easy to create container with Docker or similar container softwares
+ - but using Docker Container Engine it is more easier to create containers without knowing any low-level OS/kernel details it is easy to create containers with Docker or similar container softwares
 
 ## Container Engine
 - a high-level tool that can support managing Container Images and Containers with the help of many other tools
@@ -110,7 +111,11 @@
 - Rkt ( pronounced as Rocket )
 
 ## Docker Image
-- similar to ISO operating system image file
+- official definition 
+  - An image is a read-only template with instructions for creating a Docker container. 
+  - Often, an image is based on another image, with some additional customization
+  - You might create your own images or you might only use those created by others and published in a registry. 
+  - To build your own image, you create a Dockerfile
 - containers can be created only via Docker Image
 - any software that you want on the container level are generally pre-installed in the Docker Image
 - Docker Image will not have OS Kernel
@@ -118,9 +123,9 @@
 - Docker Image will have a yum package manager if it is a CentOS Docker Image but still will not have Linux kernel.
 
 ## Docker Container
+- A container is a runnable instance of an image
 - Docker containers are created using the Docker Image
 - Many containers can be created from a single Docker Image
-- is an instance of Docker Image
 - get's an IP address
 - containers get's its file system from the Docker Image
 - get's its own copy of network stack
@@ -293,5 +298,3 @@ docker cp file-name-in-your-local-system <container-name>:<container-absolute-pa
 ```
 docker cp <container-name>:<container-absolute-path>/<file-name> .
 ```
-
-

@@ -208,3 +208,9 @@ docker rm $(docker ps -aq)
 ```
 docker stop $(docker ps -q) && docker rm $(docker ps -aq)
 ```
+
+## Renaming a container
+Recommended practice is to use only lowercase while naming containers.
+```
+docker rename <old-container-name> <new-container-name>
+```

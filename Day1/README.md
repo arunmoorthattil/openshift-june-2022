@@ -150,6 +150,11 @@ docker images
 docker pull alpine:latest
 ```
 
+## Deleting an Docker Image from Local Registry
+```
+docker rmi ubuntu:20.04
+```
+
 ## Creating a container in the interactive(foreground) mode
 This command will take you inside the container's shell interactively
 ```
@@ -222,4 +227,5 @@ docker inspect <container-id> | grep IPA
 docker inspect <container-name> | grep IPA
 docker inspect -f "{{.NetworkSettings.IPAddress}}" <container-name>
 ```
+
 

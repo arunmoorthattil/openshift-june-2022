@@ -214,3 +214,12 @@ Recommended practice is to use only lowercase while naming containers.
 ```
 docker rename <old-container-name> <new-container-name>
 ```
+
+## Finding IP address of a running container
+```
+docker inspect <container-id>
+docker inspect <container-id> | grep IPA
+docker inspect <container-name> | grep IPA
+docker inspect -f "{{.NetworkSettings.IPAddress}}" <container-name>
+```
+

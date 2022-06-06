@@ -282,3 +282,15 @@ Expected ouptut
 <pre>
 Tomcat Works!
 </pre>
+
+## Copying a file from your host system path to container
+```
+docker cp file-name-in-your-local-system <container-name>:<container-absolute-path>
+```
+
+## Copying a file from the container to your local machine current directory
+```
+docker cp <container-name>:<container-absolute-path>/<file-name> .
+```
+
+

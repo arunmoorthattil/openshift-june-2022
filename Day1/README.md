@@ -21,6 +21,7 @@
   1. Type 1  ( Bare Metal Hypervisors - Servers )
        - doesn't require Host OS
        - it can be directly installed on a bare server
+       - https://www.vmware.com/topics/glossary/content/bare-metal-hypervisor.html
   2. Type 2  ( We install on Laptops/Desktops/Workstations )
        - requires HOST OS
        - i.e it can only be installed on top a Host Operating System ( Windows, Mac OS-X, Unix/Linux )

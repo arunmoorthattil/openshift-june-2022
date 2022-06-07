@@ -310,3 +310,27 @@ docker cp file-name-in-your-local-system <container-name>:<container-absolute-pa
 ```
 docker cp <container-name>:<container-absolute-path>/<file-name> .
 ```
+
+## Building custom Docker image using a Dockerfile
+
+Let's create a custom Dockerfile which installs vim, jdk and maven on top of ubuntu:16.04 image
+```
+FROM ubuntu:16.04
+MAINTAINER <your-name> <your-email-id>
+
+RUN apt-get update && apt-get install -y default-jdk
+RUN apt-get install -y maven
+```
+Save the above code in a file named Dockerfile.  Dockerfile is the standard file name Docker expects.
+
+You may proceed witht the image build as shown below
+```
+docker build -t <your-organization-name>/<os-name>-<tools-supported>:<version> <dockerfile-dir>
+docker build -t tektutor/ubuntu-maven:1.0 .
+```
+
+Alternatively, you could also name the Dockerfile with a custom name, let's say my-docker-file.
+In that case, the build command will look as shown below
+```
+docker build -f ./my-docker-file -t tekutor/ubuntu-maven:1.0 .
+```

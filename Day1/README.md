@@ -154,6 +154,14 @@
 ![type1hypervisor](DockerHighLevelArchitectureUpdated.png)
 ![type1hypervisor](DockerLayers.png)
 
+## Recommended articles for further reading
+<pre>
+https://medium.com/@jegan_50867/docker-overview-be840f727b3
+
+https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container
+
+</pre>
+
 ## Finding the docker version
 ```
 docker --version

@@ -143,6 +143,13 @@ Services offered by Cloud Vendors
 
 ## OpenShift High Level Architecture
 
+- RedHat OpenShift supported Docker Container Engine till v3.x.  Starting from OpenShift v4.x, Docker Container Engine is completely replaced with CRI-O and Podman.
+- RedHat OpenShift mandates using RedHat Enterprise Linux Core OS (RHCOS) on all master nodes
+- RedHat OpenShift recommendes using RHCOS on worker nodes but allows to choose between RHEL and RHCOS on Worker Nodes
+- RHCOS is custom build OS optimized for Containerized Applications that are managed within OpenShift Cluster.
+- RHCOS comes with CRI-O and Podman pre-installed
+- When RHCOS is used on all nodes, upgrading cluster from one version to other is easy as the process is completely automated, in case you chose RHEL for your Worker Nodes, upgrading the cluster will have to managed by ourselves.
+
 #### High Level Architecture
 ![OpenShift High Level Architecture](RedHatOpenShiftArchitecture.png)
 

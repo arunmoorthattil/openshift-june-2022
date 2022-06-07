@@ -356,3 +356,27 @@ javac -version
 java -version
 mvn --version
 ```
+
+## Things to consider while choosing your base image
+- the size of base image should be kept smaller as much as possible
+- from that point of view busybox or alpine images are ideal candidates to be used as a base image
+
+The same jdk8 and maven can be installed using an alpine image as shown below
+
+Dockerfile - maven-alpine-dockerfile
+```
+FROM alpine:latest
+
+RUN apk add openjdk8
+RUN apk add maven
+```
+
+You may now buid the custom image as shown below
+```
+docker build -f ./maven-alpine-dockerfile tektutor/alpine-maven:1.0 .
+```
+
+When you list the images, notice the size of tektutor/alpine-maven:1.0 and tektutor/ubuntu-maven:1.0.  In my case
+I noticed the tektutor/alpine-maven:1.0 image was atleast smaller by 420 MB.
+
+Hence using busybox or alpine as a base image is a recommended practice.

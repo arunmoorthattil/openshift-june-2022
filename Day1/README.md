@@ -463,3 +463,5 @@ curl localhost
 ```
 Each time you try the above, you are expected to see "Server 1", "Server 2" and "Server 3" in a round-robin fashion.
 You may as well try this on a web browser from the lab machine.
+
+You may also try accessing the web page from the windows lab machine using the IP address of your centos server.

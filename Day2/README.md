@@ -179,3 +179,18 @@ Expected output
 (jegan@tektutor.org)$ oc create deploy nginx --image=nginx:latest
 deployment.apps/nginx created
 </pre>
+
+
+### Listing the deployments
+```
+oc get deployments
+oc get deployment
+oc get deploy
+```
+
+Expected output
+<pre>
+(jegan@tektutor.org)$ oc get deployments
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+nginx   0/1     1            0           2m25s
+</pre>

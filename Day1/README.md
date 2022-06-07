@@ -438,6 +438,13 @@ http {
 
 In the config file above, 172.17.0.3 is the IP address of my web1 container, 172.17.0.4 is the IP address of web2 container and 172.17.0.5 is the web3 container IP address.  You need to find your web<x> container IPs and update accordingly.
 
+You can find the IP address of the web server containers as shown below
+```
+docker inspect web1 | grep IPA
+docker inspect web2 | grep IPA
+docker inspect web3 | grep IPA  
+```
+  
 We need to copy the above nginx.conf file from your local machine to the lb container as shown below
 ```
 docker cp nginx.conf lb:/etc/nginx/nginx.conf

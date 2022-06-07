@@ -107,6 +107,9 @@ Services offered by Cloud Vendors
 - CRDs just add more types of Resources into the Kubernetes Cluster, but we also need to deploy custom Controllers
   to manage our Custom Resources
   
+## Kubernetes High-Level Architecture
+[!Kubernetes Architecture](K8sArchitecture.png)
+  
 ## Kubernetes Labels
   - key/value pair
   - eg: app=nginx
@@ -138,10 +141,14 @@ Services offered by Cloud Vendors
    - container image
    - imperatively and declaratively
  
-# Tekton K-native CI/CD Framework
+## Tekton K-native CI/CD Framework
 - a Framework that works within Kubernetes/OpenShift
 - Tekton adds its own CRs and Custom Controllers on top of Kubernetes/OpenShift to support CI/CD with the Orchestration platform cluster
 - it is a serverless unline Jenkins CI/CD
+
+## RedHat OpenShift Architecture
+
+[!OpenShift Architecture]()
 
 ## OpenShift CLI commands
 

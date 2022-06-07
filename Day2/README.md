@@ -108,7 +108,7 @@ Services offered by Cloud Vendors
   to manage our Custom Resources
   
 ## Kubernetes High-Level Architecture
-[!Kubernetes Architecture](K8sArchitecture.png)
+![Kubernetes Architecture](K8sArchitecture.png)
   
 ## Kubernetes Labels
   - key/value pair

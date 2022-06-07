@@ -276,3 +276,34 @@ oc scale deploy/nginx --replicas=3
 oc scale deploy/nginx --replicas=1
 ```
 
+### Creating an external NodePort service for nginx deployment
+```
+oc expose deploy/nginx --type=NodePort --port=8080
+```
+Expected output
+<pre>
+(jegan@tektutor.org)$ oc expose deploy nginx --type=NodePort --port=8080
+service/nginx exposed
+</pre>
+
+### Listing the services
+```
+oc get services
+oc get service
+oc get svc
+```
+
+Expected ouptut
+<pre>
+(jegan@tektutor.org)$ oc expose deploy nginx --type=NodePort --port=8080
+service/nginx exposed
+(jegan@tektutor.org)$ oc get services
+NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+nginx   NodePort   172.30.152.102   <none>        8080:30316/TCP   6s
+(jegan@tektutor.org)$ oc get service
+NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+nginx   NodePort   172.30.152.102   <none>        8080:30316/TCP   8s
+(jegan@tektutor.org)$ oc get svc
+NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+nginx   NodePort   172.30.152.102   <none>        8080:30316/TCP   11s
+</pre>

@@ -153,6 +153,11 @@
 ## Docker Local Registry
 - this is local folder created and maintained by Docker Engine ( Docker Server )
 
+## Docker Architecture
+![type1hypervisor](DockerHighLevelArchitectureUpdated.png)
+![type1hypervisor](DockerHighLevelArchitecture.png)
+![type1hypervisor](DockerLayers.png)
+
 ## Finding the docker version
 ```
 docker --version

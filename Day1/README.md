@@ -380,3 +380,86 @@ When you list the images, notice the size of tektutor/alpine-maven:1.0 and tektu
 I noticed the tektutor/alpine-maven:1.0 image was atleast smaller by 420 MB.
 
 Hence using busybox or alpine as a base image is a recommended practice.
+
+## Port forward to expose a container service to outside world
+
+Let's create a load balancer container
+```
+docker run -d --name lb --hostname lb -p 80:80 nginx:latest
+```
+
+Let's create 3 nginx web server containers
+```
+docker run -d --name web1 --name web1 nginx:latest
+docker run -d --name web2 --name web2 nginx:latest
+docker run -d --name web3 --name web3 nginx:latest
+```
+
+List and check if 4 containers that we created above are running
+```
+docker ps
+```
+
+We need to configure the lb container to work like a load balancer as nginx works by default as a web server.
+
+Let's copy the nginx.conf file from lb container to local machine to configure it
+```
+docker cp lb:/etc/nginx.conf .
+```
+
+Let's edit the nginx.conf copied from the container on the local machine. After configuration the file should
+appear like below
+<pre>
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    upstream backend {
+        server 172.17.0.3:80;
+        server 172.17.0.4:80;
+        server 172.17.0.5:80;
+    }
+    
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+</pre>
+
+In the config file above, 172.17.0.3 is the IP address of my web1 container, 172.17.0.4 is the IP address of web2 container and 172.17.0.5 is the web3 container IP address.  You need to find your web<x> container IPs and update accordingly.
+
+We need to copy the above nginx.conf file from your local machine to the lb container as shown below
+```
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+docker restart lb
+```
+  
+Let's customize the index.html file on each of the web1, web2 and web3 containers as shown below from your local machine.
+
+```
+echo "Server 1" > index.html
+docker cp index.html web1:/usr/share/nginx/html/index.html
+  
+echo "Server 2" > index.html
+docker cp index.html web2:/usr/share/nginx/html/index.html
+  
+echo "Server 3" > index.html
+docker cp index.html web3:/usr/share/nginx/html/index.html
+```
+
+Now let's test if we can access the loadbalancer as shown below
+```
+curl localhost
+```
+Each time you try the above, you are expected to see "Server 1", "Server 2" and "Server 3" in a round-robin fashion.
+You may as well try this on a web browser from the lab machine.

@@ -472,3 +472,65 @@ Each time you try the above, you are expected to see "Server 1", "Server 2" and 
 You may as well try this on a web browser from the lab machine.
 
 You may also try accessing the web page from the windows lab machine using the IP address of your centos server.
+
+## Openshift client tools
+- oc client tool helps us interact with the OpenShift cluster
+- kubectl client tools originally comes from Kubernetes helps us to interact with OpenShift/Kubernetes cluster
+  
+## Administration tool
+- kubeadm 
+    - adminstrative used to setup master node and connect worker nodes part of the same cluster
+    - used to remove any node from the cluster
+    - in short this is the tool that is used to boostrap master and setup the Kubernetes cluster
+- oc adm sub command
+    - this acts like kubeadm in OpenShift
+    - otherwise pretty used for similar administrative purpose
+  
+## Regular user ( non-admin users )
+- typically use kubectl client tool in case of Kubernetes and oc tool in case of OpenShift
+
+## OpenShift cluster
+- has one or more master node
+- has one or more worker nodes
+
+## Master Node
+- has control plane components
+- Control Plane Components
+  1. API Server ( entire Orchestration features are implemented and available as REST APIs )
+  2. Scheduler - helps in identifying a health node to deploy Pods
+  3. etcd key/value datastore - cluster state is stored with etcd datastore
+  4. Controller Managers - All the monitoring, self-healing features, High Availability features come from these components
+  
+#### API Server
+- alls Kubernetes/OpenShift functionality is implemented in the form of REST APIs
+- is the only component that will access the etcd database
+- no two components can talk to each other directly, hence all communication flows via API Server
+- in other words, every component in Kubernetes/OpenShift communicates only to API Server
+  
+#### Scheduler
+- whenever new Pods are created, it is the responsibility of the Scheduler to find a healthy Node
+  where the Pod can be deployed
+- Scheduler then sends the scheduling decision to the API Server as a REST call
+ 
+#### etcd
+- all the Pod status, ReplicaSet status, Deployment status, service status are stored in the etcd
+- in short the entire status is maintained within this database by API Server
+- any change like new entry or update or deletion that happens in the database will lead to some new event trigger
+  by the API Server
+
+#### Controller Managers
+- is a collection of many Controllers
+- Controllers are the one which ensure the desired and actual state of the cluster is maintained same
+- when you deploy an application within OpenShift, you generally mention I need 5 replicas of my microservice running
+  at any of point.
+- 5 is desired number of microservices that is supposed to be running, but initially 0 Pods(microservices) will be running
+- Controllers are responsible to act to ensure the Desired number of instances and the actual number of microservices instances are maintained the same.
+- Example:
+    1. Node Controller
+    2. Deployment Controller
+    3. Repication Controller
+    4. ReplicaSet Controller
+    5. Endpoint Controller
+  
+  
+ 

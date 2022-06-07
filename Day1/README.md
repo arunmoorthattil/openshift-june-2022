@@ -301,7 +301,7 @@ Expected ouptut
 Tomcat Works!
 </pre>
 
-## Copying a file from your host system path to container
+## Copying a file from your hos/etc/nginxt system path to container
 ```
 docker cp file-name-in-your-local-system <container-name>:<container-absolute-path>
 ```
@@ -331,7 +331,7 @@ docker build -t tektutor/ubuntu-maven:1.0 .
 
 Alternatively, you could also name the Dockerfile with a custom name, let's say my-docker-file.
 In that case, the build command will look as shown below
-```
+```/etc/nginx
 docker build -f ./my-docker-file -t tekutor/ubuntu-maven:1.0 .
 ```
 
@@ -404,7 +404,7 @@ We need to configure the lb container to work like a load balancer as nginx work
 
 Let's copy the nginx.conf file from lb container to local machine to configure it
 ```
-docker cp lb:/etc/nginx.conf .
+docker cp lb:/etc/nginx/nginx.conf .
 ```
 
 Let's edit the nginx.conf copied from the container on the local machine. After configuration the file should

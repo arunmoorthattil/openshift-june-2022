@@ -143,6 +143,9 @@ Services offered by Cloud Vendors
 
 ## OpenShift High Level Architecture
 
+#### High Level Architecture
+![OpenShift High Level Architecture](RedHatOpenShiftArchitecture.png)
+
 #### Master Node
 ![Openshift Master Node](master-node.png)
 

@@ -15,10 +15,8 @@
 - many OS can be active on the same system 
 - it is a combination of Hardware & Software technology
   - Processor
-    AMD
-      - AMD-V is the virtualization feature supported on the AMD processor
-    Intel
-      - VT-X is the virtualization feature supported on the Intel processor
+    - AMD-V is the virtualization feature supported on the AMD processor
+    - VT-X is the virtualization feature supported on the Intel processor
 - There are two types of Hypervisors available
   1. Type 1  ( Bare Metal Hypervisors - Servers )
        - doesn't require Host OS

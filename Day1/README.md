@@ -318,7 +318,7 @@ Let's create a custom Dockerfile which installs vim, jdk and maven on top of ubu
 FROM ubuntu:16.04
 MAINTAINER <your-name> <your-email-id>
 
-RUN apt-get update && apt-get install -y default-jdk
+RUN apt-get update && apt-get install -y vim default-jdk
 RUN apt-get install -y maven
 ```
 Save the above code in a file named Dockerfile.  Dockerfile is the standard file name Docker expects.

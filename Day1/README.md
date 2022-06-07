@@ -532,5 +532,8 @@ You may also try accessing the web page from the windows lab machine using the I
     4. ReplicaSet Controller
     5. Endpoint Controller
   
-  
- 
+ ## Common components ( below components will be in master and worker nodes )
+ - kube-proxy - provides load balancing feature
+ - core-dns - this supports service discovery ( given a service name it translates that to an IP Address )
+ - kubelet - service/daemon. It communicates with the container engine to manage container on the node where it is running
+ - container engine ( Openshift supports only CRI-O container runtime )

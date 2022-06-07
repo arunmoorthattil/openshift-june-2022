@@ -254,3 +254,14 @@ Expected output
 (jegan@tektutor.org)$ oc delete deploy/nginx
 deployment.apps "nginx" deleted
 </pre>
+
+
+### Let's redeploy the nginx deployment with bitnami/nginx image
+```
+oc create deploy nginx --image=bitnami/nginx:lates
+```
+
+### List the deployment, replicaset and pods in a single command
+```
+oc get deploy,rs,po
+```

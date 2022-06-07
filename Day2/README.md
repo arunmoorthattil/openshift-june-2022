@@ -265,3 +265,14 @@ oc create deploy nginx --image=bitnami/nginx:lates
 ```
 oc get deploy,rs,po
 ```
+
+### Scaling up the nginx deployment
+```
+oc scale deploy/nginx --replicas=3
+```
+
+### Scaling down the nginx deployment
+```
+oc scale deploy/nginx --replicas=1
+```
+

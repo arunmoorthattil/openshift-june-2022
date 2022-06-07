@@ -194,3 +194,43 @@ Expected output
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE
 nginx   0/1     1            0           2m25s
 </pre>
+
+### Listing the replicases
+```
+oc get replicasets
+oc get replicaset
+oc get rs
+```
+
+Expected output
+<pre>
+(jegan@tektutor.org)$ oc get replicasets
+NAME               DESIRED   CURRENT   READY   AGE
+nginx-7c658794b9   1         1         0       4m22s
+(jegan@tektutor.org)$ oc get replicaset
+NAME               DESIRED   CURRENT   READY   AGE
+nginx-7c658794b9   1         1         0       4m31s
+(jegan@tektutor.org)$ oc get rs
+NAME               DESIRED   CURRENT   READY   AGE
+nginx-7c658794b9   1         1         0       4m38s
+</pre>
+
+### Listing pods
+```
+oc get pods
+oc get pod
+oc get po
+```
+
+Expected output is
+<pre>
+(jegan@tektutor.org)$ oc get pods
+NAME                     READY   STATUS             RESTARTS       AGE
+nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (106s ago)   5m31s
+(jegan@tektutor.org)$ oc get pod
+NAME                     READY   STATUS             RESTARTS       AGE
+nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (108s ago)   5m33s
+(jegan@tektutor.org)$ oc get po
+NAME                     READY   STATUS             RESTARTS       AGE
+nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (111s ago)   5m36s
+</pre>

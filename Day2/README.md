@@ -140,3 +140,11 @@ Replicaset
 # Tekton K-native CI/CD Framework
 - a Framework which works within Kubernetes also supported in OpenShift
 - Tekton adds its own CRs and Custom Controllers on top of Kubernetes/OpenShift to support CI/CD with Orchestration platform.
+
+## OpenShift CLI commands
+
+### Creating a project from command line
+```
+oc new-project <your-name>
+oc new-project jegan
+```

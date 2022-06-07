@@ -334,3 +334,25 @@ In that case, the build command will look as shown below
 ```
 docker build -f ./my-docker-file -t tekutor/ubuntu-maven:1.0 .
 ```
+
+You may check the custom build image with the below command
+```
+docker images
+```
+
+You may create a new container and test if the tools installed are working as exepcted
+```
+docker run -dit --name c1 --hostname c1 tektutor/ubuntu-maven:1.0 /bin/bash
+```
+
+You can get inside the container as shown below
+```
+docker exec -it c1 /bin/bash
+```
+
+Within the container shell prompt, you may try the below commands
+```
+javac -version
+java -version
+mvn --version
+```

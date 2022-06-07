@@ -29,8 +29,7 @@
 - Server consolidation is possible with the help of Virtualization Technology.  In other words, technically 1 or 2 Servers can host 1000 Virtual machines in the place of 1000 Physical Servers.  This results in huge cost saving in terms of real estate cost (rental/lease), power bill, air-conditioning, sound proofing, server cost, etc.,
 - What is the deciding factor that controls the max Virtual machines supported?
     - configuration of the machine
-    - Processors (
-        - multi-core 
+    - Processors with multi-cores
     - RAM
     - Storage (Hard Disk )
     - High end servers/workstations supports Multiple Sockets(Multiple Processors) in a single motherbaord

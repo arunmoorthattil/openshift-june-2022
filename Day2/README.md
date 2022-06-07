@@ -140,7 +140,13 @@ Services offered by Cloud Vendors
    - a Dockerfile
    - container image
    - imperatively and declaratively
- 
+
+## OpenShift High Level Architecture
+
+#### Master Node
+![Openshift Master Node](master-node.png)
+
+
 ## Tekton K-native CI/CD Framework
 - a Framework that works within Kubernetes/OpenShift
 - Tekton adds its own CRs and Custom Controllers on top of Kubernetes/OpenShift to support CI/CD with the Orchestration platform cluster

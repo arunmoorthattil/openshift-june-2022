@@ -155,7 +155,6 @@
 
 ## Docker Architecture
 ![type1hypervisor](DockerHighLevelArchitectureUpdated.png)
-![type1hypervisor](DockerHighLevelArchitecture.png)
 ![type1hypervisor](DockerLayers.png)
 
 ## Finding the docker version

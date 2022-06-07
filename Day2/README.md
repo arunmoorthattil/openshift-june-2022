@@ -25,7 +25,16 @@
 On-premise(on-prem) datacenters
 - datacenter
    - in a single datacenter has several thousands of servers in a particular region
-   - each Bank may have 100s of such datacenters in different cross-geo locations
+   - each Bank may have 100s of such datacenters in different(jegan@tektutor.org)$ oc get pods
+NAME                     READY   STATUS             RESTARTS       AGE
+nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (106s ago)   5m31s
+(jegan@tektutor.org)$ oc get pod
+NAME                     READY   STATUS             RESTARTS       AGE
+nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (108s ago)   5m33s
+(jegan@tektutor.org)$ oc get po
+NAME                     READY   STATUS             RESTARTS       AGE
+nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (111s ago)   5m36s
+ cross-geo locations
 
 Private Cloud
   - VMWare vcenter
@@ -233,4 +242,15 @@ nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (108s ago)   5m33s
 (jegan@tektutor.org)$ oc get po
 NAME                     READY   STATUS             RESTARTS       AGE
 nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (111s ago)   5m36s
+</pre>
+
+### Deleting a deployment
+```
+oc delete deploy/nginx
+```
+
+Expected output
+<pre>
+(jegan@tektutor.org)$ oc delete deploy/nginx
+deployment.apps "nginx" deleted
 </pre>

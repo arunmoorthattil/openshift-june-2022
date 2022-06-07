@@ -2,20 +2,19 @@
 
 ## Container Orchestration Platform
 - manages containers
-- provides an environment for applications that guarantees High Availability
-- supports inbuilt monitoring tools
+- provides an environment for applications that guarantees High Availability (HA)
+- supports in-built monitoring features
 - support self-healing when our application goes unresponsive
 - supports scaling up/down our microservice/applications
 - supports rolling update
     - upgrading your live application from one version to other without downtime
-- supports rollback in case the newly rolled out application version is found to
-  unstable
-- load balance
+- supports rollback in case the newly rolled out application version is found to be unstable
+- load balances the application pods behind services
 - RBAC(Role Based Access Control)
 - products 
     - Docker SWARM ( supports only Docker Container Engine )
-    - Google Kubernetes ( supports many types of Container Engine including Docker)
-    - RedHat OpenShift ( is developed on top of Kubernetes, supports CRI-O containers)
+    - Google Kubernetes ( supports many types of Container Engines including Docker)
+    - RedHat OpenShift ( is developed on top of Kubernetes, supports CRI-O container runtime & Podman container engine)
     - Rancher Kubernetes ( GUI for Kubernetes )
     - AWS EKS - Managed Kubernetes Service from Amazon
     - Azure AKS - Managed Kubernetes Service from Azure
@@ -24,22 +23,13 @@
 
 On-premise(on-prem) datacenters
 - datacenter
-   - in a single datacenter has several thousands of servers in a particular region
-   - each Bank may have 100s of such datacenters in different(jegan@tektutor.org)$ oc get pods
-NAME                     READY   STATUS             RESTARTS       AGE
-nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (106s ago)   5m31s
-(jegan@tektutor.org)$ oc get pod
-NAME                     READY   STATUS             RESTARTS       AGE
-nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (108s ago)   5m33s
-(jegan@tektutor.org)$ oc get po
-NAME                     READY   STATUS             RESTARTS       AGE
-nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (111s ago)   5m36s
- cross-geo locations
+   - a single datacenter has several thousands of servers in a particular region
+   - each Bank may have 100s of such datacenters in different regions and cross-geo locations
 
 Private Cloud
-  - VMWare vcenter
+  - VMWare vCenter
   - OpenStack
-  - is AWS/Azure like features supported within in Organization from the datacenters
+  - is AWS/Azure like features supported within in an Organization from the datacenters
     owned by your organization
 
 Public Cloud
@@ -60,9 +50,9 @@ Services offered by Cloud Vendors
     - Let's say we used AWS S3, we only pay for how much time we used the particular
       amount of Storage
     - We need to bring the Operating System License
-    - Installing OS, performing Security on the OS is your organization's responsibility
+    - Installing OS, performing Security patches on the OS is your organization's responsibility
     - The cloud vendor is only responsible for the HA of the H/W
-    - Taking backup, upgrading OS is your's organization's responsibility
+    - Taking backup, upgrading OS is your organization's responsibility
     - For example
       - ec2 instances (Virtual Machines)
       - many ec2 instances can be created from a single Physical Server
@@ -89,10 +79,10 @@ Services offered by Cloud Vendors
 ## Kubernetes Overview
 - Google developed this Container Orchestration Platform using Go programming language
 - Google used this orchestration platform internally for several years
-- it is opensource
+- opensource product
 - no support, only community level support is there without any SLA
 - it is a time tested platform
-- it supports loadbalances, services, High Availibility, scaling up/down, rolling updates, etc
+- it supports loadbalancers, services, High Availibility, scaling up/down, rolling updates, etc
 - Kubernetes supports many types of built-in resources
    - Deployment
    - ReplicaSet
@@ -104,17 +94,17 @@ Services offered by Cloud Vendors
    - Job
    - Ingress
    - IngressController
-- Application when deployed within Kubernetes, they are deployed as Deployment
-- Deployment has one or more ReplicaSet
+- Appilcations are deployed in Kubernetes as Deployment
+- Deployment has one or more ReplicaSets
 - Each ReplicaSet manages one or more Pods
 - Each ReplicaSet represents a single version of the application
 - Pod is a collection of related containers
 - the smallest unit that can be deployed in a Kubernetes is a Pod
 - In Kubernetes IP address is assigned only on the Pod level ( In docker, each container gets a IP Address).
   In a Pod, there can be many containers running, all the containers within the same Pod shares the same IP.
-- Kubernetes allows us adding our own custom resources(CR) by creating a CustomResourceDefinition (CRD) yaml
+- Kubernetes allows us adding our own custom resources(CR) by creating a CustomResourceDefinition (CRD) yaml file
 - Using CRDs, one can extend the Kubernetes API ( features )
-- CRDs just add more types of Resources into the Kubernetes Cluster, but we also need to add Custom Controllers
+- CRDs just add more types of Resources into the Kubernetes Cluster, but we also need to deploy custom Controllers
   to manage our Custom Resources
   
 ## Kubernetes Labels
@@ -124,12 +114,12 @@ Services offered by Cloud Vendors
   - the use of labels
   - Deployment identifies the Replicaset by using labels
 
-Deployment
+## Deployment
    - will select the replicaset
    - kubectl get replicasets -l app=nginx
    - Deployment manages ReplicaSet
 
-Replicaset
+## Replicaset
    - will select the Pods based on some matching labels
    - ReplicaSet manages Pod
    - kubectl get pods -l app=nginx
@@ -140,26 +130,32 @@ Replicaset
 - Using Kubernetes CRDs and Custom Controllers, RedHat added several useful features on top of Kubernetes
 - OpenShift is nothing but Kubernetes + additional CRs and addition Controllers
 - OpenShift supports Private Container Registry within the OpenShift out of the box
-- OpenShift suppports CI/CD within the OpenShift
+- OpenShift suppports CI/CD within OpenShift cluster
+- Openshift supports user management based on RBAC out of the box
 - Applications can be deployed from
    - source code (S2I - Source to Image)
    - a Dockerfile
-   - from container image
+   - container image
+   - imperatively and declaratively
  
 # Tekton K-native CI/CD Framework
-- a Framework which works within Kubernetes also supported in OpenShift
-- Tekton adds its own CRs and Custom Controllers on top of Kubernetes/OpenShift to support CI/CD with Orchestration platform.
+- a Framework that works within Kubernetes/OpenShift
+- Tekton adds its own CRs and Custom Controllers on top of Kubernetes/OpenShift to support CI/CD with the Orchestration platform cluster
+- it is a serverless unline Jenkins CI/CD
 
 ## OpenShift CLI commands
 
 ### Creating a project from command line
+In OpenShift, applications are deployed within a project namespace.  Technically, project is nothing but namespace.
+Different teams can create their own project and isolate their application deployments from others.
+
 ```
 oc new-project <your-name>
 oc new-project jegan
 ```
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc new-project jegan
+(jegan@tektutor.org)$ <b>oc new-project jegan</b>
 Now using project "jegan" on server "https://api.ocp.tektutor.org:6443".
 
 You can add applications to this project with the 'new-app' command. For example, try:
@@ -185,7 +181,7 @@ oc create deploy nginx --image=nginx:latest
 
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc create deploy nginx --image=nginx:latest
+(jegan@tektutor.org)$ <b>oc create deploy nginx --image=nginx:latest</b>
 deployment.apps/nginx created
 </pre>
 
@@ -199,7 +195,7 @@ oc get deploy
 
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc get deployments
+(jegan@tektutor.org)$ <b>oc get deployments</b>
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE
 nginx   0/1     1            0           2m25s
 </pre>
@@ -213,13 +209,13 @@ oc get rs
 
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc get replicasets
+(jegan@tektutor.org)$ <b>oc get replicasets</b>
 NAME               DESIRED   CURRENT   READY   AGE
 nginx-7c658794b9   1         1         0       4m22s
-(jegan@tektutor.org)$ oc get replicaset
+(jegan@tektutor.org)$ <b>oc get replicaset</b>
 NAME               DESIRED   CURRENT   READY   AGE
 nginx-7c658794b9   1         1         0       4m31s
-(jegan@tektutor.org)$ oc get rs
+(jegan@tektutor.org)$ <b>oc get rs</b>
 NAME               DESIRED   CURRENT   READY   AGE
 nginx-7c658794b9   1         1         0       4m38s
 </pre>
@@ -233,7 +229,7 @@ oc get po
 
 Expected output is
 <pre>
-(jegan@tektutor.org)$ oc get pods
+(jegan@tektutor.org)$ <b>oc get pods</b>
 NAME                     READY   STATUS             RESTARTS       AGE
 nginx-7c658794b9-2wmmx   0/1     CrashLoopBackOff   5 (106s ago)   5m31s
 (jegan@tektutor.org)$ oc get pod
@@ -251,7 +247,7 @@ oc delete deploy/nginx
 
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc delete deploy/nginx
+(jegan@tektutor.org)$ <b>oc delete deploy/nginx</b>
 deployment.apps "nginx" deleted
 </pre>
 
@@ -282,7 +278,7 @@ oc expose deploy/nginx --type=NodePort --port=8080
 ```
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc expose deploy nginx --type=NodePort --port=8080
+(jegan@tektutor.org)$ <b>oc expose deploy nginx --type=NodePort --port=8080</b>
 service/nginx exposed
 </pre>
 
@@ -295,15 +291,15 @@ oc get svc
 
 Expected ouptut
 <pre>
-(jegan@tektutor.org)$ oc expose deploy nginx --type=NodePort --port=8080
+(jegan@tektutor.org)$ <b>oc expose deploy nginx --type=NodePort --port=8080</b>
 service/nginx exposed
-(jegan@tektutor.org)$ oc get services
+(jegan@tektutor.org)$ <b>oc get services</b>
 NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 nginx   NodePort   172.30.152.102   <none>        8080:30316/TCP   6s
-(jegan@tektutor.org)$ oc get service
+(jegan@tektutor.org)$ <b>oc get service</b>
 NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 nginx   NodePort   172.30.152.102   <none>        8080:30316/TCP   8s
-(jegan@tektutor.org)$ oc get svc
+(jegan@tektutor.org)$ <b>oc get svc</b>
 NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 nginx   NodePort   172.30.152.102   <none>        8080:30316/TCP   11s
 </pre>

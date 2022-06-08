@@ -22,7 +22,7 @@ public class App {
         Class.forName("com.mysql.jdbc.Driver");
 
         Connection conn = DriverManager.getConnection (
-            "jdbc:mysql://mysql-service:3306/tektutor","root","root@123"
+            "jdbc:mysql://mysql:3306/tektutor","root","root@123"
         );
 
         Statement stmnt = conn.createStatement();

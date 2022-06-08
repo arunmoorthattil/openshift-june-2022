@@ -117,3 +117,57 @@ oc create deploy nginx --image=bitnami/nginx:latest
     running and sends a heart-beat kind of updates to API Server via REST call.
 
 
+## Creating deployment via declarative manifest files
+
+Let's generate the deployment manifest file
+```
+oc create deploy nginx --image=bitnami/nginx:latest --dry-run=client -o yaml > nginx-deploy.yml
+```
+
+Let's create the nginx deployment in declarative style
+```
+oc apply -f nginx-deploy.yml
+```
+
+## Scaling up/down the deployment in the declarative style
+You can edit the nginx-deploy.yml replicas and apply the change
+
+```
+oc apply -f nginx-deploy.yml
+```
+
+## Creating a clusterip internal service in declarative style
+```
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml > nginx-clusterip-service.yml
+```
+
+Now you can create the clusterip service declaratively
+```
+oc apply -f nginx-clusterip-service.yml
+```
+
+## Deleting a service declaratively
+```
+oc delete -f nginx-clusterip-service.yml
+```
+
+
+## Creating a NodePort external service in declarative style
+```
+oc expose deploy/nginx --type=NodePort --port=8080 --dry-run=client -o yaml > nginx-nodeport-service.yml
+```
+
+Now you can create the nodeport service declaratively
+```
+oc apply -f nginx-nodeport-service.yml
+```
+
+## Creating a LoadBalancer external service in declarative style
+```
+oc expose deploy/nginx --type=LoadBalancer --port=8080 --dry-run=client -o yaml > nginx-lb-service.yml
+```
+
+Now you can create the Loadbalancer service declaratively
+```
+oc apply -f nginx-lb-service.yml
+```

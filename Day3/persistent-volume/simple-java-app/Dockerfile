@@ -1,4 +1,4 @@
-FROM maven:3.6.3-jdk-11 as builder
+FROM docker.io/maven:3.6.3-jdk-11 as builder
 RUN mvn clean -e -B package
 COPY --from=builder target/*.jar app.jar
 

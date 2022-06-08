@@ -12,12 +12,12 @@ oc expose deploy/nginx --type=ClusterIP  --port=8080
 
 Expected output
 <pre>
-(jegan@tektutor.org)$ oc expose deploy/nginx --type=ClusterIP  --port=8080
+(jegan@tektutor.org)$ <b>oc expose deploy/nginx --type=ClusterIP  --port=8080</b>
 service/nginx exposed
-(jegan@tektutor.org)$ oc get svc
+(jegan@tektutor.org)$ <b>oc get svc</b>
 NAME    TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
 nginx   ClusterIP   172.30.95.1   <none>        8080/TCP   4s
-(jegan@tektutor.org)$ oc describe svc/nginx
+(jegan@tektutor.org)$ <b>oc describe svc/nginx</b>
 Name:              nginx
 Namespace:         jegan
 Labels:            app=nginx

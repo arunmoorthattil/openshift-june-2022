@@ -1,6 +1,6 @@
-FROM docker.io/maven:3.6.3-jdk-11 as builder
+FROM docker.io/maven:3.6.3-jdk-11
 RUN mvn clean -e -B package
-COPY --from=builder target/*.jar app.jar
+COPY target/*.jar app.jar
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.6-751
 COPY app.jar /app.jar

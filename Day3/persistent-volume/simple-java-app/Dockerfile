@@ -1,4 +1,6 @@
 FROM docker.io/maven:3.6.3-jdk-11 as stage1
+COPY src .
+COPY pom.xml .
 RUN mvn clean package
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.6-751

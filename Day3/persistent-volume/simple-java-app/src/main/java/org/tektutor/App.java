@@ -6,8 +6,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
 import java.sql.*;
 
+@Configuration
+@ConfigurationProperties(prefix = "quickstart")
 @SpringBootApplication
 @RestController
 public class App {
@@ -19,27 +24,22 @@ public class App {
 
     private String getGreetingMsgFromDB() {
       try {
-        Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql:mysql:3306/tektutor","root","root@123");
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery ( "SELECT * FROM greeting" );
 
-        Connection conn = DriverManager.getConnection (
-            "jdbc:mysql:mysql:3306/tektutor","root","root@123"
-        );
+            while( rs.next() ) {
+                msg = rs.getString(1);
+            }
+      } 
+      catch( Exception e ) { e.printStackTrace(); }
 
-        Statement stmnt = conn.createStatement();
-        
-        ResultSet rs = stmnt.executeQuery ( "SELECT * FROM greeting" );
-
-        while( rs.next() ) {
-            msg = rs.getString(1);
-        }
-      } catch( Exception e ) { e.printStackTrace(); }
-
-        return msg;
+      return msg;
     }
     
     @RequestMapping("/")
     public String sayHello() {
-        //return "Hello World !";
         return getGreetingMsgFromDB();
     }
 

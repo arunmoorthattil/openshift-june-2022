@@ -1,7 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv
+  name: mysql-pv-jegan
+  namespace: jegan
+  labels:
+    name: jegan
 spec:
   capacity:
     storage: 500Mi
@@ -15,12 +18,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pvc
-  namespace: tektutor
+  name: mysql-pvc-jegan
+  namespace: jegan 
 spec:
   selector:
     matchLabels:
-       app: mysql
+       name: jegan 
   accessModes:
     - ReadWriteMany
   volumeMode: Filesystem
@@ -32,6 +35,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-credentials
+  namespace: jegan
 data:
   username: cm9vdA==
   password: cm9vdEAxMjM=  
@@ -39,6 +43,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: jegan
   labels:
     app: mysql
   name: mysql
@@ -63,8 +68,25 @@ spec:
                 key: password
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+          mountPath: /bitnami/mysql/data
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: jegan
+  labels:
+    app: mysql
+  name: mysql
+  namespace: tektutor
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: mysql
+  type: ClusterIP

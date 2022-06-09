@@ -171,3 +171,45 @@ Now you can create the Loadbalancer service declaratively
 ```
 oc apply -f nginx-lb-service.yml
 ```
+
+## Lab Exericise - Persistent Volume and Claims
+
+First create the mysql application deployment
+```
+cd ~
+git clone https://github.com/tektutor/openshift-june-2022.git
+cd openshift-june-2022/Day3/persistent-volume/simple-java-app
+
+oc apply -f mysql-deploy.yml
+```
+
+Then you create the java application deployment
+```
+cd ~
+cd openshift-june-2022
+git pull
+
+oc new-app https://github.com/tektutor/openshift-june-2022.git --context-dir=Day3/persistent-volume/sample-java-app --strategy=docker --name=hello
+```
+
+Let's create the hello service
+```
+cd ~
+cd openshift-june-2022
+git pull
+
+cd Day3/persistent-volume/simple-java-app
+
+oc apply -f hello-svc.yml
+```
+
+Let's create the public route to access the hello application
+```
+cd ~
+cd openshift-june-2022
+git pull
+
+cd Day3/persistent-volume/simple-java-app
+
+oc apply -f hello-route.yml
+```

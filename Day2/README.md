@@ -4,7 +4,7 @@
 :x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
 ```
-cd /home/alchemy/Downloads
+cd ~/Downloads
 tar xvf crc-linux-amd64.tar.xz
 cd crc-linux-1.38.0-amd64
 ./crc setup

@@ -28,6 +28,14 @@ spec:
     requests:
       storage: 500Mi
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-credentials
+data:
+  username: cm9vdA==
+  password: cm9vdEAxMjM=  
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,7 +57,10 @@ spec:
         name: mysql
         env:
          - name: MYSQL_ROOT_PASSWORD
-           value: "root@123"
+           valueFrom: 
+             secretKeyRef: 
+                name: mysql-credentials
+                key: password
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql

@@ -189,7 +189,7 @@ cd ~
 cd openshift-june-2022
 git pull
 
-oc new-app https://github.com/tektutor/openshift-june-2022.git --context-dir=Day3/persistent-volume/sample-java-app --strategy=docker --name=hello
+oc new-app https://github.com/tektutor/openshift-june-2022.git --context-dir=Day3/persistent-volume/simple-java-app --strategy=docker --name=hello
 ```
 
 Let's create the hello service
